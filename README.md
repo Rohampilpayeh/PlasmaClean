@@ -1,4 +1,4 @@
-# PlasmaClean
+
 
 <p align="center">
   <img width="1024" height="1024" alt="plasmaclean" src="https://github.com/user-attachments/assets/36200561-4256-4540-9f8d-4ad436c49a99" />
