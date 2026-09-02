@@ -1,113 +1,195 @@
 # PlasmaClean
 
 <p align="center">
-  <img src="assets/plasmaclean-icon.png" width="120" alt="PlasmaClean">
+  <img src="assets/PLACEME-ICON.png" width="110" alt="PlasmaClean application icon">
 </p>
 
-<h2 align="center">A lightweight system cleaner for Linux.</h2>
+<h1 align="center">PlasmaClean</h1>
 
 <p align="center">
-  Clean unnecessary files, reclaim disk space, and keep your system tidy.
+  Lightweight Linux system cleaner for KDE Plasma.
 </p>
 
 <p align="center">
-  <img src="assets/plasmaclean-screenshot.png" width="420" alt="PlasmaClean">
+  Clean system clutter, reclaim disk space, and keep your Linux desktop tidy.
+</p>
+
+<p align="center">
+
+![Linux](https://img.shields.io/badge/Linux-Supported-FCC624?style=for-the-badge\&logo=linux\&logoColor=black)
+![KDE Plasma](https://img.shields.io/badge/KDE%20Plasma-Supported-1D99F3?style=for-the-badge\&logo=kde\&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
+![PySide6](https://img.shields.io/badge/PySide6-Qt6-41CD52?style=for-the-badge\&logo=qt\&logoColor=white)
+
+</p>
+
+---
+
+## Preview
+
+
+  <img width="383" height="589" alt="Screenshot_20260901_213341" src="https://github.com/user-attachments/assets/b36f6791-495d-4377-8d73-ea67830f7167" />
+
+
+<p align="center">
+  <img src="assets/PLACEME-SCREENSHOT.png" width="520" alt="Screenshot of the PlasmaClean application interface.">
 </p>
 
 ---
 
 ## About
 
-**PlasmaClean** is a lightweight Linux system cleaning utility designed with a clean, simple interface and support for multiple Linux distributions.
+**PlasmaClean** is a lightweight Linux system cleaning utility designed for KDE Plasma.
 
-It automatically detects your package manager and provides a straightforward way to clean common system clutter without needing to manually search through directories or remember terminal commands.
+It provides a simple graphical interface for finding and removing common system clutter without requiring users to manually search through directories or remember multiple terminal commands.
 
-Built with **Python and PySide6**, PlasmaClean is designed to stay fast, simple, and easy to use.
+PlasmaClean automatically detects the package manager available on the system and uses the appropriate cleanup tools.
+
+### What it can clean
+
+* Application cache
+* Package manager cache
+* Old system journal logs
+* Thumbnail cache
+* Trash
+* Unused/orphaned packages
+
+---
+
+## Supported Linux Distributions
+
+PlasmaClean supports multiple Linux families through automatic package-manager detection.
+
+| Linux family         | Package manager |
+| -------------------- | --------------- |
+| Arch Linux / Manjaro | Pacman          |
+| Debian / Ubuntu      | APT             |
+| Fedora / RHEL        | DNF             |
+| openSUSE             | Zypper          |
+| Alpine Linux         | APK             |
+| Gentoo               | Portage         |
+
+> Package-manager cleanup depends on the package manager available on the system.
+
+---
+
+## Installation
+
+### Recommended: Install the compiled release
+
+Download the latest **Linux x86_64** release from the GitHub Releases page.
+
+The release is distributed as a standalone Linux application and does **not** require Python or PySide6 to be installed separately.
+
+Extract the downloaded archive and run:
+
+```bash
+sudo ./install.sh
+```
+
+After installation, PlasmaClean will appear in your desktop's application menu.
+
+You can launch it normally:
+
+**Applications → PlasmaClean**
+
+No terminal is required after installation.
+
+---
+
+## Why does installation require a password?
+
+PlasmaClean is a **system utility**, so some of its operations need administrator privileges.
+
+The installer uses `sudo` because it installs the application into system directories such as:
+
+```text
+/opt/PlasmaClean
+/usr/share/applications
+/usr/share/icons
+```
+
+These locations are protected by Linux and normally require administrator access.
+
+PlasmaClean also uses the operating system's standard authentication mechanism when a cleanup operation requires elevated privileges.
+
+Your password is **not used by PlasmaClean as an application password**. It is requested by Linux to authorize the privileged operation.
+
+---
+
+## How PlasmaClean Works
+
+```text
+Scan
+  ↓
+Select cleanup categories
+  ↓
+Review the amount of data
+  ↓
+Clean
+```
+
+PlasmaClean focuses on known cache, log, thumbnail, trash, and package-manager locations instead of randomly deleting files from the filesystem.
+
+---
 
 ## Features
 
-* **Application Cache** — Remove cached application data
-* **Package Cache** — Clean downloaded package files
-* **System Journal** — Remove older system logs
-* **Thumbnail Cache** — Clear generated image and video thumbnails
-* **Trash** — Empty the desktop trash
-* **Unused Packages** — Find and remove orphaned packages
-* **Automatic Detection** — Detects your Linux package manager automatically
-* **Lightweight UI** — Simple interface designed for KDE Plasma
-* **Compiled Releases** — Run PlasmaClean without installing Python or its dependencies
+* Lightweight KDE Plasma interface
+* Automatic package-manager detection
+* Multiple Linux distribution families
+* Application cache cleanup
+* Package cache cleanup
+* System journal cleanup
+* Thumbnail cleanup
+* Trash cleanup
+* Orphan package cleanup
+* Standalone compiled release
+* No Python installation required for the compiled release
 
-## Multi-Distribution Support
+---
 
-PlasmaClean is designed to work across multiple Linux distributions by detecting the package manager available on your system.
+## Built With
 
-| Distribution / Family | Package Manager |
-| --------------------- | --------------- |
-| Arch Linux / Manjaro  | Pacman          |
-| Debian / Ubuntu       | APT             |
-| Fedora / RHEL         | DNF             |
-| openSUSE              | Zypper          |
-| Alpine Linux          | APK             |
-| Gentoo                | Portage         |
+![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=flat-square\&logo=python\&logoColor=white)
+![Qt](https://img.shields.io/badge/Qt-6-41CD52?style=flat-square\&logo=qt\&logoColor=white)
+![PySide6](https://img.shields.io/badge/PySide6-6.x-41CD52?style=flat-square\&logo=qt\&logoColor=white)
+![Nuitka](https://img.shields.io/badge/Built%20with-Nuitka-4B8BBE?style=flat-square)
 
-More distributions and package managers may be supported in future releases.
+---
 
-## Why PlasmaClean?
+## Project Goals
 
-Linux gives you powerful tools for managing your system, but keeping a machine clean can still involve checking several different locations and commands.
+PlasmaClean is designed to make common Linux maintenance tasks simple without turning system cleaning into a complicated process.
 
-PlasmaClean puts common cleanup tasks into one simple interface.
+Planned improvements include:
 
-**Scan. Select. Clean.**
+* Additional package managers
+* More cleanup categories
+* Improved disk-space scanning
+* More detailed cleanup information
+* Additional desktop environment support
+* Performance improvements
 
-## Download
+---
 
-Precompiled Linux releases are available through the **GitHub Releases** page.
+## Safety
 
-Download the latest:
+PlasmaClean targets known cleanup locations and package-manager operations.
 
-`PlasmaClean-Linux-x86_64.tar.gz`
+System-level operations may require administrator authorization.
 
-Extract the archive and launch:
+Always review the selected cleanup categories before starting a cleanup.
 
-`app.bin`
+---
 
-The release is bundled with the required runtime components, so you don't need to install Python, PySide6, or the project's source code to run it.
+## Status
 
-## System Requirements
+![Status](https://img.shields.io/badge/Status-Active%20Development-3DAEE9?style=for-the-badge)
 
-* Linux x86_64
-* Qt6-compatible desktop environment
-* KDE Plasma recommended
-* Supported package manager for package-related cleanup features
+PlasmaClean is actively being developed.
 
-## Technology
-
-PlasmaClean is built using:
-
-* Python
-* PySide6 / Qt6
-* Nuitka
-* Native Linux package-management tools
-
-## Project Status
-
-PlasmaClean is an actively developed project.
-
-The goal is to keep the application lightweight while gradually expanding distribution support, cleanup options, and system maintenance features.
-
-## Security & Safety
-
-PlasmaClean is designed to target known cache, log, thumbnail, trash, and package-manager locations rather than deleting arbitrary system files.
-
-Some operations require administrator privileges and use the system's standard authentication mechanism.
-
-Always review what you are cleaning before running system maintenance operations.
-
-## Screenshots
-
-<p align="center">
-  <img src="assets/plasmaclean-screenshot.png" width="420" alt="PlasmaClean screenshot">
-</p>
+---
 
 ## Author
 
@@ -116,7 +198,6 @@ Always review what you are cleaning before running system maintenance operations
 ---
 
 <p align="center">
-  <b>PlasmaClean</b><br>
+  <strong>PlasmaClean</strong><br>
   Lightweight. Simple. Linux.
 </p>
-
